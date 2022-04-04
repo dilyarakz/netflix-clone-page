@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import Fuse from 'fuse.js';
 import { Card, Loading, Header, Player } from '../components';
 import * as ROUTES from '../constants/routes';
-import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 import { getAuth, signOut } from "firebase/auth"
@@ -17,15 +16,15 @@ export function BrowseContainer({ slides }) {
     const [slideRows, setSlideRows] = useState([]);
     const auth = getAuth();
     const history = useNavigate();
-    // const { firebase } = useContext(FirebaseContext);
+    const [user, setUser] = useState({});
     
     
-    const user = {
-        displayName: "Dilya",
-        photoURL: "2"
-    };
     
     useEffect(() => {
+        setUser({
+        displayName: "Dilya",
+        photoURL: "2"
+    })
         setTimeout(() => {
             setLoading(false)
         }, 3000);
@@ -44,7 +43,7 @@ export function BrowseContainer({ slides }) {
       } else {
           setSlideRows(slides[category]);
       }
-    }, [searchTerm])
+    }, [searchTerm, slideRows, slides, category])
     
     return profile.displayName ? (
         <>
