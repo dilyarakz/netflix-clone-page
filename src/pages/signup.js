@@ -5,7 +5,6 @@ import { FooterContainer } from '../containers/footer';
 import { HeaderContainer } from '../containers/header';
 import { Form } from '../components';
 import * as ROUTES from '../constants/routes';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Signup() {
     const history = useNavigate();
@@ -14,7 +13,6 @@ export default function Signup() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { firebase } = useContext(FirebaseContext);
-    const auth = getAuth();
     
     const isInvalid = firstName === '' || password === '' || emailAddress === '';
     

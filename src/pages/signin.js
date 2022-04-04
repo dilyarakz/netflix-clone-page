@@ -5,10 +5,9 @@ import { Form } from '../components';
 import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Signin(props) {
-    const { firebase, seedDatabase } = useContext(FirebaseContext);
+    const { firebase } = useContext(FirebaseContext);
     const history = useNavigate();
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
